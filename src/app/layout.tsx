@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex h-full w-full flex-row items-center bg-primary-900 text-primary-100`}
+        className={`${inter.className} flex h-full w-full flex-row items-center overflow-hidden bg-primary-900 text-primary-100`}
       >
         <SlideMenu />
         {children}
