@@ -2,7 +2,7 @@
 
 import useCreateFocusRef from '@/hooks/useCreateFocusRef';
 import Link from 'next/link';
-import { AnchorHTMLAttributes, useCallback, useState } from 'react';
+import { AnchorHTMLAttributes, useCallback, useEffect, useState } from 'react';
 import {
   FaAnglesLeft,
   FaHouse,
@@ -26,9 +26,8 @@ const ROUTES: Record<string, Routes> = {
 };
 
 export const SlideMenu = () => {
-  const currentRoute = window.location.pathname.split('/').pop() ?? '';
   const [open, setOpen] = useState<boolean>(false);
-  const [route, setRoute] = useState<Routes>(ROUTES[currentRoute]);
+  const [route, setRoute] = useState<Routes>(Routes.Home);
   const ref = useCreateFocusRef<HTMLDivElement>(() => {
     setOpen(false);
   });
@@ -39,6 +38,11 @@ export const SlideMenu = () => {
 
   const onSelectNav = useCallback((_route: Routes) => {
     setRoute(_route);
+  }, []);
+
+  useEffect(() => {
+    const currentRoute = window.location.pathname.split('/').pop() ?? '';
+    setRoute(ROUTES[currentRoute]);
   }, []);
 
   return (
