@@ -1,4 +1,6 @@
+import { Modal } from '@/components/Modal';
 import { SlideMenu } from '@/components/SlideMenu';
+import { ModalContextProvider } from '@/context/ModalContext';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -19,8 +21,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex h-full w-full flex-row items-center overflow-hidden bg-primary-900 text-primary-100`}
       >
-        <SlideMenu />
-        {children}
+        <ModalContextProvider>
+          <SlideMenu />
+          {children}
+          <Modal />
+        </ModalContextProvider>
       </body>
     </html>
   );

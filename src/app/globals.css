@@ -35,3 +35,9 @@
 .scrollbar-hide:hover {
     scrollbar-color: #C0C0C0 transparent;
 }
+
+.modal-bg {
+    background: rgba(183, 183, 183, 0.2);
+    backdrop-filter: blur( 0.1rem );
+    -webkit-backdrop-filter: blur( 0.1rem );
+}

@@ -2,6 +2,7 @@
 
 import useCreateFocusRef from '@/hooks/useCreateFocusRef';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AnchorHTMLAttributes, useCallback, useEffect, useState } from 'react';
 import {
   FaAnglesLeft,
@@ -10,6 +11,7 @@ import {
   FaListCheck,
   FaRegNewspaper,
 } from 'react-icons/fa6';
+import gengar from '../assets/images/gengar.png';
 
 enum Routes {
   Home = '/',
@@ -52,6 +54,13 @@ export const SlideMenu = () => {
         open ? 'w-nav' : 'w-16'
       } h-screen shrink-0 flex-col bg-primary-800 transition-all`}
     >
+      <Image
+        className="ml-5 mt-4 rounded-md"
+        src={gengar}
+        alt="gengar"
+        width={24}
+        height={24}
+      />
       <nav className="flex h-full w-full flex-col gap-4 overflow-y-auto overflow-x-hidden px-2 py-4">
         <NavElement
           current={route === Routes.Home}
