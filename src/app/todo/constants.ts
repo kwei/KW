@@ -14,7 +14,8 @@ export const mockData: ITodoItem[] = [
       category: 'Backlog',
       endDate: '2023/1/1',
       description: 'some description here',
-    })
+      draft: false,
+    } as ITodoItem)
     .map((data, index) => ({
       ...data,
       id: index,
@@ -29,7 +30,8 @@ export const mockData: ITodoItem[] = [
       category: 'category 1',
       endDate: '2023/1/1',
       description: 'some description here',
-    })
+      draft: false,
+    } as ITodoItem)
     .map((data, index) => ({
       ...data,
       id: index + 3,

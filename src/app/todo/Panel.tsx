@@ -26,6 +26,7 @@ export const Panel = memo((props: Props) => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [isEditName, setIsEditName] = useState<boolean>(false);
   const [sectionName, setSectionName] = useState<string>(name);
+  const [onDrag, setOnDrag] = useState<boolean>(false);
   const ref = useCreateFocusRef<HTMLButtonElement>(() => {
     setOpenMenu(false);
   });
@@ -59,6 +60,18 @@ export const Panel = memo((props: Props) => {
     [sectionNameRef],
   );
 
+  const handleOnDragOver = useCallback(() => {
+    setOnDrag(true);
+  }, []);
+
+  const handleOnDragLeave = useCallback(() => {
+    setOnDrag(false);
+  }, []);
+
+  const handleOnDrop = useCallback(() => {
+    // move the dragged element to the dropped panel
+  }, []);
+
   useEffect(() => {
     handler((prevState) => {
       const originalValue = prevState[name];
@@ -73,7 +86,12 @@ export const Panel = memo((props: Props) => {
   }, [handler, name, sectionName]);
 
   return (
-    <div className="flex h-full w-60 shrink-0 flex-col items-center p-4">
+    <div
+      onDragOver={handleOnDragOver}
+      onDragLeave={handleOnDragLeave}
+      onDrop={handleOnDrop}
+      className="flex h-full w-60 shrink-0 flex-col items-center p-4"
+    >
       <div className="flex w-full items-center justify-between">
         {isEditName ? (
           <input
@@ -110,7 +128,11 @@ export const Panel = memo((props: Props) => {
           </button>
         </div>
       </div>
-      <div className="scrollbar-hide mt-4 flex w-full flex-col items-center gap-4 overflow-y-auto pr-2">
+      <div
+        className={`scrollbar-hide mt-4 flex h-full w-full flex-col items-center gap-4 overflow-y-auto rounded-3xl border border-dashed p-2 transition-all ${
+          onDrag ? 'border-primary-600 bg-primary-800' : ' border-transparent'
+        }`}
+      >
         {list.map((data, index) => (
           <TodoItem
             key={`todo-${name}-${data.title}-${index.toString()}`}

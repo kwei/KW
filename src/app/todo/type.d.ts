@@ -7,4 +7,5 @@ interface ITodoItem {
   category: string;
   endDate: string;
   description: string;
+  draft?: boolean;
 }

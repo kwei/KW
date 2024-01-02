@@ -52,7 +52,7 @@ export const SlideMenu = () => {
       ref={ref}
       className={`flex ${
         open ? 'w-nav' : 'w-16'
-      } h-screen shrink-0 flex-col bg-primary-800 transition-all`}
+      } h-screen shrink-0 select-none flex-col bg-primary-800 transition-all`}
     >
       <Image
         className="ml-5 mt-4 rounded-md"

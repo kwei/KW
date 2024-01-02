@@ -37,7 +37,7 @@ export const PanelList = memo(() => {
       ))}
       <button
         onClick={handleAddSection}
-        className="my-2 ml-6 flex items-center gap-2 rounded-lg border border-dashed border-primary-600 py-2 pl-4 pr-5 text-base font-semibold transition-all hover:border-solid hover:bg-primary-600"
+        className="my-2 ml-6 flex select-none items-center gap-2 rounded-lg border border-dashed border-primary-600 py-2 pl-4 pr-5 text-base font-semibold transition-all hover:border-solid hover:bg-primary-600"
       >
         <FaPlus className="h-4 w-4 hover:text-primary-300" />
         New Section
